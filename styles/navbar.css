@@ -1,0 +1,62 @@
+.gradient-nav {
+    background-image: linear-gradient(#000000b3, #00000000);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+  }
+  
+
+/* Hamburger menu button */
+
+#nav-icon1,
+#nav-icon2,
+#nav-icon3,
+#nav-icon4 {
+  width: 30px;
+  height: 50px;
+  position: relative;
+  margin: 20px 0 0 0 ;
+  transform: rotate(0deg);
+  transition: 0.7s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon1 span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: #aab1bc; /* Gray color for the hamburger bars */
+  border-radius: 4px;
+  opacity: 1;
+  left: 0;
+  transition: 0.5s ease-in-out;
+}
+
+#nav-icon1 span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon1 span:nth-child(2) {
+  top: 10px;
+}
+
+#nav-icon1 span:nth-child(3) {
+  top: 20px;
+}
+
+#nav-icon1.open span:nth-child(1) {
+  top: 10px;
+  transform: rotate(135deg);
+}
+
+#nav-icon1.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+
+#nav-icon1.open span:nth-child(3) {
+  top: 10px;
+  transform: rotate(-135deg);
+}

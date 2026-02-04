@@ -1,0 +1,76 @@
+.mask-btn__animated {
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  
+    /* default state */
+    -webkit-animation: mask-ani2 0.7s steps(var(--mask-steps)) forwards;
+    animation: mask-ani2 0.7s steps(var(--mask-steps)) forwards;
+  }
+  
+  /* ✅ NORMAL: animate to "ani" when button hovered OR parent .group hovered */
+  .mask-btn:hover .mask-btn__animated,
+  .group:hover .mask-btn .mask-btn__animated {
+    -webkit-animation: mask-ani 0.7s steps(var(--mask-steps)) forwards;
+    animation: mask-ani 0.7s steps(var(--mask-steps)) forwards;
+  }
+  
+  /* ✅ REVERSE: default is ani */
+  .mask-btn.mask-btn--reverse .mask-btn__animated {
+    -webkit-animation: mask-ani 0.7s steps(var(--mask-steps)) forwards;
+    animation: mask-ani 0.7s steps(var(--mask-steps)) forwards;
+  }
+  
+  /* ✅ REVERSE: on hover (button OR parent group), go back to ani2 */
+  .mask-btn.mask-btn--reverse:hover .mask-btn__animated,
+  .group:hover .mask-btn.mask-btn--reverse .mask-btn__animated {
+    -webkit-animation: mask-ani2 0.7s steps(var(--mask-steps)) forwards;
+    animation: mask-ani2 0.7s steps(var(--mask-steps)) forwards;
+  }
+  
+  /* Variants */
+  .mask-btn--mask1 .mask-btn__animated {
+    -webkit-mask-image: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    mask-image: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/nature-sprite.png");
+    -webkit-mask-size: 2300% 100%;
+    mask-size: 2300% 100%;
+  }
+  
+  .mask-btn--mask2 .mask-btn__animated {
+    -webkit-mask-image: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
+    mask-image: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png");
+    -webkit-mask-size: 3000% 100%;
+    mask-size: 3000% 100%;
+  }
+  
+  .mask-btn--mask3 .mask-btn__animated {
+    -webkit-mask-image: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+    mask-image: url("https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png");
+    -webkit-mask-size: 7100% 100%;
+    mask-size: 7100% 100%;
+  }
+  
+  /* Keyframes */
+  @keyframes mask-ani {
+    from {
+      -webkit-mask-position: 0 0;
+      mask-position: 0 0;
+    }
+    to {
+      -webkit-mask-position: 100% 0;
+      mask-position: 100% 0;
+    }
+  }
+  
+  @keyframes mask-ani2 {
+    from {
+      -webkit-mask-position: 100% 0;
+      mask-position: 100% 0;
+    }
+    to {
+      -webkit-mask-position: 0 0;
+      mask-position: 0 0;
+    }
+  }
