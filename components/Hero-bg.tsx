@@ -57,7 +57,7 @@ export default function HeroBg() {
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-black/20" />
+      {/* <div className="absolute inset-0 bg-black/20" /> */}
 
       <div className="relative max-w-[1300px] mx-auto  flex-col justify-center h-full xl:px-0 lg:px-0 px-4 text-white hidden md:flex ">
         <motion.h1

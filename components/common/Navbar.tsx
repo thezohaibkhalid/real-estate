@@ -18,17 +18,17 @@ const Navbar = () => {
   }
   return (
     <header className="gradient-nav">
-      <nav className="max-w-[1300px] mx-auto flex justify-between items-center h-20 mt-2  px-[2.5%]">
+      <nav className="max-w-[1300px] mx-auto flex justify-between items-center h-20 mt-4  px-[2.5%]">
         <div>
           <Image src="/icons/real-estate.svg" alt="logo" width={128} height={128} />
         </div>
-        <div className="flex gap-8 md:flex hidden">
+        <div className="flex xl:gap-14 lg:gap-10 gap-8 md:flex hidden">
           {navLinks.map((link) => (
-            <Link href={link.href} className="text-white hover:text-[var(--background-primary)] duration-400 transition-colors font-medium text-xl tracking-tight" key={link.href}>{link.label}</Link>
+            <Link href={link.href} className="text-white hover:text-[var(--background-primary)] duration-400 transition-colors font-light text-lg tracking-tight" key={link.href}>{link.label}</Link>
           ))}
         </div>
         <div className="md:flex hidden">
-          <MaskButton href="/contact" label="Contact" variant="mask1"  className="py-3 px-6 " spanClass="text-lg font-semibold" roundedClass="rounded-full" reverse={true} />
+          <MaskButton href="/contact" label="Contact" variant="mask1"  className="py-4 px-9 " spanClass="text-lg font-semibold" roundedClass="rounded-full" reverse={true} />
         </div>
         <button
             id="nav-icon1"
