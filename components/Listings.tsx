@@ -104,20 +104,23 @@ function StyledDropdown({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative w-42">
+    <div className="relative w-full md:flex-1">
         <button
           type="button"
           onClick={() => setOpen((s) => !s)}
-          className={`flex w-full items-center gap-3 px-5 py-3 xl:h-12 cursor-pointer ${CONTROL_BASE} ${CONTROL_FOCUS}`}
+          className={`flex justify-between w-full items-center gap-3 px-5 py-3 h-14 cursor-pointer ${CONTROL_BASE} ${CONTROL_FOCUS}`}
         >
-        <span className={`text-neutral-500 ${open ? "text-[var(--background-primary)]" : ""}`}>
+        <div className="flex items-center gap-3">
+        <span className={`text-neutral-500  ${open ? "text-[var(--background-primary)]" : ""}`}>
           {icon}
         </span>
 
         <div className="flex min-w-0 flex-1 flex-col items-start">
-          <span className="truncate text-sm font-medium text-neutral-800">
+          <span className="truncate text-base font-light text-neutral-800">
             {value}
           </span>
+        </div>
+
         </div>
 
         <ChevronDown
@@ -129,7 +132,7 @@ function StyledDropdown({
         <>
           <button
             aria-label="Close dropdown"
-            className="fixed inset-0 z-10 cursor-default"
+            className="fixed inset-0 z-10 cursor-default "
             onClick={() => setOpen(false)}
             type="button"
           />
@@ -187,31 +190,37 @@ export default function Listings() {
     <section className="w-full bg-white">
       <div className="relative">
         <div className="pointer-events-none absolute left-0 right-0 top-0 z-20">
-          <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
-            <div className="-translate-y-12 sm:-translate-y-14 md:-translate-y-16">
-              <div className="pointer-events-auto rounded-2xl border border-neutral-200 bg-white p-4 shadow-xl sm:p-5">
-                <div className="flex items-center gap-4">
+          <div className="mx-auto w-full max-w-[1300px] px-4 sm:px-6 -translate-y-12 sm:-translate-y-14 md:-translate-y-16">
+            <div className="pointer-events-auto rounded-2xl border border-neutral-200 bg-white p-4 shadow-xl sm:p-5">
+               
+               
+                <div className="flex flex-col gap-4 md:flex-col lg:flex-row lg:items-center">
                     
-                  <div className={`flex flex-1 items-center gap-3 p-8 ${CONTROL_BASE} ${CONTROL_FOCUS} h-12`}>
-                    <SearchIcon className="h-12 w-12 text-neutral-400" />
-                    <input
-                      value={query}
-                      onChange={(e) => setQuery(e.target.value)}
-                      placeholder="Search for properties"
-                      className="w-full bg-transparent text-lg text-[var(--background-secondary)] outline-none placeholder:text-gray-400 font-light"
-                    />
-                    
+                  <div className="flex flex-col gap-3 w-full md:w-full lg:w-1/2">
+                    <div className={`flex items-center gap-3 px-3 py-1 md:py-1 ${CONTROL_BASE} ${CONTROL_FOCUS} h-12 md:h-14`}>
+                      <SearchIcon className="h-5 w-5 text-neutral-400" />
+                      <input
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder="Search for properties"
+                        className="w-full bg-transparent text-base text-[var(--background-secondary)] outline-none placeholder:text-gray-400 font-light"
+                      />
+                      <button
+                        type="button"
+                        className="hidden md:block rounded-full bg-[var(--background-primary)] px-7 text-base font-medium text-white shadow-sm transition hover:opacity-95 h-10"
+                      >
+                        Search
+                      </button>
+                    </div>
                     <button
-                    type="button"
-                    className="rounded-full bg-[var(--background-primary)] px-7 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 h-12"
-                  >
-                    Search
-                  </button>
+                      type="button"
+                      className="w-full rounded-full bg-[var(--background-primary)] px-7 py-3 text-base font-medium text-white shadow-sm transition hover:opacity-95 md:hidden"
+                    >
+                      Search
+                    </button>
                   </div>
 
-
-
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-col gap-3 w-full md:flex-row md:w-full lg:w-1/2">
                     <StyledDropdown
                       icon={<Home className="h-4 w-4" />}
                       value={property}
@@ -232,55 +241,11 @@ export default function Listings() {
                     />
                   </div>
                 </div>
-
-                {/* <div className="xl:hidden">
-                  <div className="flex flex-col gap-3 md:flex-row md:items-center">
-                    <div className={`flex w-full items-center gap-3 px-5 py-3 cursor-pointer ${CONTROL_BASE} ${CONTROL_FOCUS}`}>
-                      <SearchIcon className="h-4 w-4 text-neutral-400" />
-                      <input
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        placeholder="Search for properties"
-                        className="w-full bg-transparent text-sm text-neutral-700 outline-none placeholder:text-neutral-400"
-                      />
-                    </div>
-
-                    <button
-                      type="button"
-                      className="w-full rounded-full bg-[var(--background-primary)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95 md:w-44"
-                    >
-                      Search
-                    </button>
-                  </div>
-
-                  <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-3">
-                    <StyledDropdown
-                      icon={<Home className="h-4 w-4" />}
-                      value={property}
-                      onChange={(v) => setProperty(v as any)}
-                      options={PROPERTY_OPTIONS}
-                    />
-                    <StyledDropdown
-                      icon={<MapPin className="h-4 w-4" />}
-                      value={location}
-                      onChange={(v) => setLocation(v as any)}
-                      options={LOCATION_OPTIONS}
-                    />
-                    <StyledDropdown
-                      icon={<SlidersHorizontal className="h-4 w-4" />}
-                      value={type}
-                      onChange={(v) => setType(v as any)}
-                      options={TYPE_OPTIONS}
-                    />
-                  </div>
-                </div> */}
-              </div>
             </div>
           </div>
         </div>
 
-        {/* Main content */}
-        <div className="mx-auto w-full max-w-6xl px-4 pb-10 pt-40 sm:px-6 sm:pt-44 md:pb-14 md:pt-48">
+        <div className="mx-auto w-full max-w-[1300px] px-4 pb-10 pt-40 sm:px-6 sm:pt-44 md:pb-14 md:pt-48">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className="text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl md:text-5xl">
