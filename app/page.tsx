@@ -4,6 +4,9 @@ import Listings from '@/components/Listings'
 import AboutUs from '@/components/AboutUs'
 import FeaturedListings from '@/components/FeaturedListings'
 import PopularCities from '@/components/PopularCities'
+import GetInTouch from '@/components/GetInTouch'
+import Testimonials from '@/components/Testimonial'
+
 export default function Home() {
   return (
     <div>
@@ -12,6 +15,8 @@ export default function Home() {
       <AboutUs />
       <FeaturedListings />
       <PopularCities />
+      <Testimonials />
+      <GetInTouch />
     </div>
   )
 }

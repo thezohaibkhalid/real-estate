@@ -168,12 +168,12 @@ export default function PopularCities({
             {title}
           </h2>
 
-          <div className="flex items-center gap-4 overflow-hidden p-2">
+          <div className="flex items-center gap-2 overflow-hidden p-2">
             <button
               type="button"
               onClick={handlePrev}
               disabled={!canLeft}
-              className={`group flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all duration-300 hover:bg-(--background-primary) hover:border-transparent hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 disabled:hover:bg-white/5 disabled:cursor-not-allowed hover:ring-2 hover:ring-[var(--background-primary)]/30`}
+              className={`group flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all duration-300 hover:bg-(--background-primary) hover:border-transparent hover:scale-105 active:scale-90 disabled:opacity-30 disabled:hover:scale-100 disabled:hover:bg-white/5 disabled:cursor-not-allowed hover:ring-2 hover:ring-(--background-primary)/30`}
               aria-label="Previous"
             >
               <ArrowLeft className="h-5 w-5" />
@@ -183,7 +183,7 @@ export default function PopularCities({
               type="button"
               onClick={handleNext}
               disabled={!canRight}
-              className={`group flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all duration-300 hover:bg-(--background-primary) hover:border-transparent hover:scale-105 disabled:opacity-30 disabled:hover:scale-100 disabled:hover:bg-white/5 disabled:cursor-not-allowed hover:ring-2 hover:ring-[var(--background-primary)]/30`}
+              className={`group flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all duration-300 hover:bg-(--background-primary) hover:border-transparent hover:scale-105 active:scale-90 disabled:opacity-30 disabled:hover:scale-100 disabled:hover:bg-white/5 disabled:cursor-not-allowed hover:ring-2 hover:ring-(--background-primary)/30`}
               aria-label="Next"
             >
               <ArrowRight className="h-5 w-5" />

@@ -27,7 +27,7 @@ const slideUp: Variants = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 2, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
@@ -35,7 +35,7 @@ const zoomOut: Variants = {
   hidden: { scale: 1.15 },
   show: {
     scale: 1,
-    transition: { duration: 1.6, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 8, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
