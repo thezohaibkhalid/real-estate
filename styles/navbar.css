@@ -1,6 +1,6 @@
 .gradient-nav {
     background-image: linear-gradient(#000000b3, #00000000);
-    position: fixed;
+    position: absolute;
     width: 100%;
     z-index: 100;
     top: 0;

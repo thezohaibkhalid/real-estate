@@ -18,7 +18,7 @@ const Navbar = () => {
   }
   return (
     <header className="gradient-nav">
-      <nav className="max-w-[1300px] mx-auto flex justify-between items-center h-20 mt-4  px-[2.5%]">
+      <nav className="max-w-[1300px] mx-auto flex justify-between items-center h-20 md:mt-4   px-[2.5%]">
         <div>
           <Image src="/icons/real-estate.svg" alt="logo" width={128} height={128} />
         </div>
