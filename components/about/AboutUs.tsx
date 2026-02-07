@@ -1,9 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { Urbanist } from "next/font/google";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useInView } from "framer-motion";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -43,6 +43,8 @@ function useMotionPrefs() {
 
 export default function AboutUs() {
   const { reduce, dur, hoverDur } = useMotionPrefs();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
 
   const container = {
     hidden: {},
@@ -84,7 +86,7 @@ export default function AboutUs() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#0d0d0d]">
+    <section className="relative w-full overflow-hidden bg-[#0d0d0d]  ">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-70"
@@ -95,11 +97,11 @@ export default function AboutUs() {
       />
 
       <motion.div
-        className="relative mx-auto w-full max-w-[1300px] px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:py-28"
+        ref={ref}
+        className="relative mx-auto w-full max-w-[1350px] px-[4%] py-16 sm:px-6 sm:py-20 md:py-24 lg:py-28 md:px-0"
         variants={container}
         initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.35 }}
+        animate={isInView ? "show" : "hidden"}
       >
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-12">
           <motion.div className="col-span-1" variants={fadeUp}>
@@ -121,7 +123,7 @@ export default function AboutUs() {
         </div>
 
         <motion.hr
-          className="my-12 h-px max-w-[1300px] bg-white/10 sm:my-14 md:my-16 lg:my-20"
+          className="my-12 h-px max-w-[1350px] bg-white/10 sm:my-14 md:my-16 lg:my-20"
           style={{ transformOrigin: "left" }}
           variants={line}
         />

@@ -59,7 +59,7 @@ export default function HeroBg() {
 
       {/* <div className="absolute inset-0 bg-black/20" /> */}
 
-      <div className="relative max-w-[1300px] mx-auto  flex-col justify-center h-full xl:px-0 lg:px-0 px-4 text-white hidden md:flex ">
+      <div className="relative max-w-[1350px] mx-auto  flex-col justify-center h-full xl:px-0 lg:px-0 px-4 text-white hidden md:flex ">
         <motion.h1
           className={`${urbanist.className} font-medium tracking-[2px] xl:text-[86px] lg:text-[70px] md:text-[66px] text-[46px] leading-[1.02] mt-6 px-[2.5%]`}
           variants={textWrap}

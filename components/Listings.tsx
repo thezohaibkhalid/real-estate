@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRef, useEffect } from "react";
 import {
   ArrowRight,
   Check,
@@ -10,7 +10,7 @@ import {
   Search as SearchIcon,
   SlidersHorizontal,
 } from "lucide-react";
-
+import { Urbanist } from "next/font/google";
 type Listing = {
   id: string;
   title: string;
@@ -20,6 +20,16 @@ type Listing = {
   badge: string;
   metaRight: string;
 };
+
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+
 
 const MOCK_LISTINGS: Listing[] = [
   {
@@ -102,21 +112,38 @@ function StyledDropdown({
   options: readonly string[];
 }) {
   const [open, setOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   return (
-    <div className="relative w-full md:flex-1">
+    <div ref={dropdownRef} className="relative w-full md:flex-1">
         <button
           type="button"
           onClick={() => setOpen((s) => !s)}
           className={`flex justify-between w-full items-center gap-3 px-5 py-3 h-18 cursor-pointer ${CONTROL_BASE} ${CONTROL_FOCUS}`}
         >
         <div className="flex items-center gap-3">
-        <span className={`text-neutral-500  ${open ? "text-[var(--background-primary)]" : ""}`}>
+        <span className={`text-gray-500  ${open ? "text-[var(--background-primary)]" : ""}`}>
           {icon}
         </span>
 
         <div className="flex min-w-0 flex-1 flex-col items-start">
-          <span className="truncate text-base font-light text-neutral-800">
+          <span className={`truncate text-[17px] text-gray-800  font-semibold ${urbanist.className}`}>
             {value}
           </span>
         </div>
@@ -124,47 +151,45 @@ function StyledDropdown({
         </div>
 
         <ChevronDown
-          className={`h-4 w-4 text-neutral-400 transition ${open ? "rotate-180" : ""}`}
+          className={`h-4 w-4 text-gray-400 transition ${open ? "rotate-180" : ""}`}
         />
       </button>
 
       {open && (
-        <>
-          <button
-            aria-label="Close dropdown"
-            className="fixed inset-0 z-10 cursor-default "
-            onClick={() => setOpen(false)}
-            type="button"
-          />
-          <div className="absolute left-0 right-0 z-20 mt-2 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl xl:w-64">
-            <div className="max-h-64 overflow-auto p-1">
-              {options.map((opt) => {
-                const selected = opt === value;
-                return (
-                  <button
-                    key={opt}
-                    type="button"
-                    onClick={() => {
-                      onChange(opt);
-                      setOpen(false);
-                    }}
-                    className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition
-                      ${selected ? "bg-[var(--background-primary)]/10 text-[var(--background-primary)]" : "text-neutral-700 hover:bg-neutral-50"}`}
-                  >
-                    <span className="truncate">{opt}</span>
-                    {selected && <Check className="h-4 w-4" />}
-                  </button>
-                );
-              })}
-            </div>
+        <div className="absolute left-0 right-0 z-20 mt-2 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-xl xl:w-64">
+          <div 
+            className="max-h-64 overflow-auto p-1 space-y-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:hover:bg-[var(--background-primary)]"
+            style={{
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#d1d5db #f3f4f6'
+            }}
+          >
+            {options.map((opt) => {
+              const selected = opt === value;
+              return (
+                <button
+                  key={opt}
+                  type="button"
+                  onClick={() => {
+                    onChange(opt);
+                    setOpen(false);
+                  }}
+                  className={`flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition
+                    ${selected ? "bg-[var(--background-primary)]/10 text-[var(--background-primary)]" : "text-neutral-700 bg-gray-100 hover:bg-[var(--background-primary)]/10"}`}
+                >
+                  <span className="truncate">{opt}</span>
+                  {selected && <Check className="h-4 w-4" />}
+                </button>
+              );
+            })}
           </div>
-        </>
+        </div>
       )}
     </div>
   );
 }
 
-export default function Listings() {
+export default function Listings({showNewListings = false}: {showNewListings?: boolean}) {
   const [query, setQuery] = useState("");
   const [property, setProperty] =
     useState<(typeof PROPERTY_OPTIONS)[number]>("Properties");
@@ -189,32 +214,32 @@ export default function Listings() {
   return (
     <section className="w-full bg-white">
       <div className="relative">
-        <div className="pointer-events-none absolute left-0 right-0 md:top-0 top-[-200px] z-20">
-          <div className="mx-auto w-full max-w-[1300px] px-4 sm:px-6 -translate-y-12 sm:-translate-y-14 md:-translate-y-16">
+        <div className="pointer-events-none absolute left-0 right-0 md:top-[-12px] top-[-200px] z-20">
+          <div className="mx-auto w-full max-w-[1350px] px-[4%] sm:px-6 -translate-y-12 sm:-translate-y-14 md:-translate-y-16 md:px-0">
             <div className="pointer-events-auto rounded-2xl border border-neutral-200 bg-white p-4 shadow-xl sm:p-5 py-10">
                
                
                 <div className="flex flex-col gap-4 md:flex-col lg:flex-row lg:items-center py-4">
                     
                   <div className="flex flex-col gap-3 w-full md:w-full lg:w-1/2">
-                    <div className={`flex items-center gap-3 px-3 py-4 md:py-4 ${CONTROL_BASE} ${CONTROL_FOCUS}`}>
+                    <div className={`flex items-center gap-3 px-3 py-4 md:py-3 ${CONTROL_BASE} ${CONTROL_FOCUS}`}>
                       <SearchIcon className="h-8 w-8 text-neutral-400" />
                       <input
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder="Search for properties"
-                        className="w-full bg-transparent text-base text-[var(--background-secondary)] outline-none placeholder:text-gray-400 font-light placeholder:text-[17px]"
+                        className={`w-full bg-transparent text-base text-[var(--background-secondary)] outline-none placeholder:text-gray-400 font-light placeholder:text-[17px] ${urbanist.className}`}
                       />
                       <button
                         type="button"
-                        className="hidden md:block rounded-full bg-[var(--background-primary)] px-7 text-base font-medium text-white shadow-sm transition hover:opacity-95 h-10"
+                        className={`hidden md:block rounded-full bg-[var(--background-primary)] px-7  h-12 text-base font-medium text-white shadow-sm transition hover:opacity-95 h-10 ${urbanist.className}`}
                       >
                         Search
                       </button>
                     </div>
                     <button
                       type="button"
-                      className="w-full rounded-full bg-[var(--background-primary)] px-7 py-3 text-base font-medium text-white shadow-sm transition hover:opacity-95 md:hidden"
+                      className={`w-full rounded-full bg-[var(--background-primary)] px-7 py-3 text-base font-medium text-white shadow-sm transition hover:opacity-95 md:hidden ${urbanist.className}`}
                     >
                       Search
                     </button>
@@ -224,19 +249,19 @@ export default function Listings() {
                     <StyledDropdown
                       icon={<Home className="h-4 w-4" />}
                       value={property}
-                      onChange={(v) => setProperty(v as any)}
+                      onChange={(v) => setProperty(v as (typeof PROPERTY_OPTIONS)[number])}
                       options={PROPERTY_OPTIONS}
                     />
                     <StyledDropdown
                       icon={<MapPin className="h-4 w-4" />}
                       value={location}
-                      onChange={(v) => setLocation(v as any)}
+                      onChange={(v) => setLocation(v as (typeof LOCATION_OPTIONS)[number])}
                       options={LOCATION_OPTIONS}
                     />
                     <StyledDropdown
                       icon={<SlidersHorizontal className="h-4 w-4" />}
                       value={type}
-                      onChange={(v) => setType(v as any)}
+                      onChange={(v) => setType(v as (typeof TYPE_OPTIONS)[number])}
                       options={TYPE_OPTIONS}
                     />
                   </div>
@@ -245,7 +270,8 @@ export default function Listings() {
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-[1300px] px-4 pb-10 pt-80 sm:px-6 sm:pt-60 md:pb-14 lg:pt-40 md:pt-58">
+        <div className="mx-auto w-full max-w-[1350px] px-[4%] pb-10 pt-80 sm:px-6 sm:pt-60 md:pb-14 lg:pt-40 md:pt-58 md:px-0">
+          {showNewListings && (
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <div className="col-span-1">
               <h2 className="text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl md:text-5xl lg:text-6xl">
@@ -267,7 +293,7 @@ export default function Listings() {
               </button>
             </div>
           </div>
-
+            )}
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filtered.map((item) => (
               <article key={item.id} className="group">

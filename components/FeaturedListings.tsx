@@ -163,7 +163,7 @@ export default function FeaturedListings({
 }) {
   return (
     <section className="w-full bg-white">
-      <div className="mx-auto w-full max-w-[1300px] px-4 py-16 sm:px-6 md:py-20">
+      <div className="mx-auto w-full max-w-[1350px] px-[4%] py-16 sm:px-6 md:py-20 md:px-0">
         <h2 className="text-5xl font-medium tracking-tight text-neutral-900 md:text-6xl">
           Featured Listings
         </h2>

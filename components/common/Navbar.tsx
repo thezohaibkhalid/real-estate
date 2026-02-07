@@ -6,8 +6,8 @@ import MaskButton from "./MaskButton";
 import { useState } from "react";
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/properties", label: "Properties" },
+  { href: "/about-us", label: "About Us" },
   // { href: "/blogs", label: "Blogs" },
   // { href: "/pages", label: "Pages" },
 ]
@@ -18,7 +18,7 @@ const Navbar = () => {
   }
   return (
     <header className="gradient-nav">
-      <nav className="max-w-[1300px] mx-auto flex justify-between items-center h-20 md:mt-4   px-[2.5%]">
+      <nav className="max-w-[1350px] mx-auto flex justify-between items-center h-20 md:mt-4   md:px-0 px-[4%]">
         <div>
           <Image src="/icons/real-estate.svg" alt="logo" width={128} height={128} />
         </div>
@@ -28,7 +28,7 @@ const Navbar = () => {
           ))}
         </div>
         <div className="md:flex hidden">
-          <MaskButton href="/contact" label="Contact" variant="mask1"  className="py-4 px-9 " spanClass="text-lg font-semibold" roundedClass="rounded-full" reverse={true} />
+          <MaskButton href="/contact-us" label="Contact Us" variant="mask1"  className="py-4 px-8 " spanClass="text-lg font-semibold" roundedClass="rounded-full" reverse={true} />
         </div>
         <button
             id="nav-icon1"

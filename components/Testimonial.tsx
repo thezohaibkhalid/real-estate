@@ -190,7 +190,7 @@ const   Testimonials = ({
 
   return (
     <section className="w-full py-10 md:py-16 bg-white overflow-x-hidden">
-      <div ref={ref} className="max-w-[1300px] mx-auto px-[4%] md:px-0">
+      <div ref={ref} className="max-w-[1350px] mx-auto px-[4%] md:px-0">
         <motion.div
           className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10"
           variants={headingVariants}

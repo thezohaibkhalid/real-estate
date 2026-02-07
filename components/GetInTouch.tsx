@@ -31,10 +31,10 @@ export default function GetInTouch() {
         </motion.div>
       </div>
 
-      <div className="relative z-10 flex h-full w-full flex-col items-start justify-center px-[4%] sm:px-12 md:px-34 lg:px-42">
-        <div className="max-w-4xl">
+      <div className="relative z-10 flex h-full w-full flex-col items-start justify-center md:px-0 px-[4%] max-w-[1350px] mx-auto">
+        <div className="max-w-6xl">
           <motion.h2
-            className="font-light text-white text-[42px] leading-[1.1] sm:text-[56px] md:text-[72px]"
+            className="font-light text-white text-[48px] leading-[1.1] sm:text-[60px] md:text-[78px]"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -54,7 +54,7 @@ export default function GetInTouch() {
           >
             <button
               type="button"
-              className="group flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-8 py-4 text-lg text-white backdrop-blur-sm transition-all hover:bg-white hover:text-black hover:scale-105 active:scale-95"
+              className="group flex items-center gap-3 rounded-full border border-white/30 bg-white/10 px-8 py-3 text-lg text-white backdrop-blur-sm transition-all hover:bg-white hover:text-[var(--background-primary)] hover:scale-105 active:scale-95"
             >
               Get In Touch
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
