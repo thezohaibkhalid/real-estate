@@ -46,7 +46,7 @@ const PageHeader = ({ title, image, breadcrumb }: { title: string, image: string
   const isInView = useInView(ref, { once: false, amount: 0.1 });
 
   return (
-    <section ref={ref} className='w-full h-[500px] relative overflow-hidden'>
+    <section ref={ref} className='w-full h-[65vh] relative overflow-hidden'>
       <motion.div
         className="absolute inset-0"
         variants={zoomOut}
@@ -62,7 +62,7 @@ const PageHeader = ({ title, image, breadcrumb }: { title: string, image: string
         />
       </motion.div>
 
-      <div className='absolute inset-0 bg-black/20' />
+      {/* <div className='absolute inset-0 bg-black/20' /> */}
 
       <motion.div
         className='absolute inset-0 flex flex-col max-w-[1350px] mx-auto justify-center px-[4%] md:px-0'

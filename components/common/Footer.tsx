@@ -11,7 +11,6 @@ const DB_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const socialLinks = [
   { name: "Instagram", href: "https://www.instagram.com/mbhstudioo", icon: Instagram },
-  { name: "Behance", href: "https://www.behance.net/mbhstudioo", icon: Palette },
   { name: "Twitter", href: "https://x.com/mbhstudioo", icon: Twitter },
   { name: "Facebook", href: "https://www.facebook.com/mbhstudioo/", icon: Facebook },
   { name: "YouTube", href: "https://www.youtube.com/@mbhstudioo", icon: Youtube },
