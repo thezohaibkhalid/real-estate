@@ -2,6 +2,7 @@
 import Navbar from "@/components/common/Navbar";
 import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/common/Footer";
 const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -21,6 +22,7 @@ export default function RootLayout({
       >
         <Navbar />  
         {children}
+        <Footer />
       </body>
     </html>
   );

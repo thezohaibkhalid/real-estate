@@ -97,15 +97,15 @@ function FeaturedListingRow({
   const inView = useInView(rowRef, { once: false, margin: "-90px 0px -120px 0px" });
 
   return (
-    <div ref={rowRef} className="w-full">
-      <div className="group relative grid grid-cols-1 gap-8 md:grid-cols-[620px_1fr] hover:cursor-pointer">
+    <div ref={rowRef} className="w-full ">
+      <div className="group relative grid grid-cols-1 gap-8 md:grid-cols-[620px_1fr] hover:cursor-pointer ">
         <motion.div
           variants={imageRevealVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           className="relative overflow-hidden rounded-2xl bg-neutral-100 shadow-sm"
         >
-          <div className="relative aspect-[16/8] w-full">
+          <div className="relative aspect-[14/8] w-full">
             <Image
               src={item.image}
               alt={item.title}
@@ -121,7 +121,7 @@ function FeaturedListingRow({
           variants={textContainerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="flex h-full flex-col justify-between py-2"
+          className="flex h-full  flex-col justify-between py-2"
         >
           <div className="flex flex-col gap-4">
             <motion.div variants={textItemVariants} className="flex items-start justify-between gap-6">

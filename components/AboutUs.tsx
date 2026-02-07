@@ -85,7 +85,6 @@ export default function AboutUs() {
 
   return (
     <section className="relative w-full overflow-hidden bg-[#0d0d0d]">
-      {/* subtle background glow */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-70"
@@ -102,7 +101,6 @@ export default function AboutUs() {
         whileInView="show"
         viewport={{ once: true, amount: 0.35 }}
       >
-        {/* Header */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-12">
           <motion.div className="col-span-1" variants={fadeUp}>
             <span
@@ -122,85 +120,37 @@ export default function AboutUs() {
           </motion.div>
         </div>
 
-        {/* Divider */}
         <motion.hr
           className="my-12 h-px max-w-[1300px] bg-white/10 sm:my-14 md:my-16 lg:my-20"
           style={{ transformOrigin: "left" }}
           variants={line}
         />
 
-        {/* Features */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-10 lg:grid-cols-3 lg:gap-12">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <motion.article
               key={feature.title}
               variants={card}
-              whileHover={reduce ? undefined : { y: -3 }}
-              transition={{ duration: hoverDur, ease: easeOut }}
-              className="group relative flex items-start gap-4 sm:gap-5"
+              className="flex items-start gap-4 sm:gap-5"
             >
-              {/* icon */}
-              <motion.div
-                className="shrink-0"
-                whileHover={reduce ? undefined : { scale: 1.06, rotate: -1 }}
-                transition={{ duration: hoverDur, ease: easeOut }}
-              >
-                <div className="relative">
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute -inset-2 rounded-2xl opacity-0 blur-xl transition-opacity duration-300 group-hover:opacity-100"
-                    style={{
-                      background:
-                        "radial-gradient(circle at 50% 50%, rgba(255,255,255,0.14), transparent 65%)",
-                    }}
-                  />
-                  <Image
-                    src={feature.image}
-                    alt={feature.title}
-                    width={75}
-                    height={75}
-                    className="relative"
-                  />
-                </div>
-              </motion.div>
-
-              {/* text */}
-              <div className="space-y-2">
-                <motion.h3
-                  className={`${urbanist.className} text-xl font-medium text-white md:text-3xl`}
-                  initial={false}
-                  animate={undefined}
-                >
-                  {feature.title}
-                </motion.h3>
-
-                <motion.p className="text-[14px] leading-relaxed text-white/60 sm:text-[15px] md:text-[16px]">
-                  {feature.description}
-                </motion.p>
-
-                {/* subtle repeating shimmer line (professional + minimal) */}
-                {!reduce && (
-                  <motion.div
-                    aria-hidden
-                    className="mt-3 h-[1px] w-full overflow-hidden rounded-full bg-white/10"
-                  >
-                    <motion.div
-                      className="h-full w-24 rounded-full bg-[var(--background-primary)]/60"
-                      initial={{ x: -120, opacity: 0.0 }}
-                      animate={{ x: ["-120px", "140%"], opacity: [0, 0.7, 0] }}
-                      transition={{
-                        duration: 2.8,
-                        ease: "linear",
-                        repeat: Infinity,
-                        repeatDelay: 1.2 + index * 0.25, // slightly offset per card
-                      }}
-                    />
-                  </motion.div>
-                )}
+              <div className="shrink-0">
+                <Image
+                  src={feature.image}
+                  alt={feature.title}
+                  width={75}
+                  height={75}
+                />
               </div>
 
-              {/* soft border on hover */}
-              <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5 transition group-hover:ring-[var(--background-primary)]/20" />
+              <div className="space-y-2">
+                <h3 className={`${urbanist.className} text-xl font-medium text-white md:text-3xl`}>
+                  {feature.title}
+                </h3>
+
+                <p className="text-[14px] leading-relaxed text-white/60 sm:text-[15px] md:text-[16px]">
+                  {feature.description}
+                </p>
+              </div>
             </motion.article>
           ))}
         </div>

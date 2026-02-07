@@ -31,8 +31,7 @@ export default function GetInTouch() {
         </motion.div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full w-full flex-col items-start justify-center px-4 sm:px-12 md:px-24 lg:px-32">
+      <div className="relative z-10 flex h-full w-full flex-col items-start justify-center px-[4%] sm:px-12 md:px-34 lg:px-42">
         <div className="max-w-4xl">
           <motion.h2
             className="font-light text-white text-[42px] leading-[1.1] sm:text-[56px] md:text-[72px]"
