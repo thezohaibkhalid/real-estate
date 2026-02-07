@@ -18,10 +18,10 @@ const Navbar = () => {
   }
   return (
     <header className="gradient-nav">
-      <nav className="max-w-[1350px] mx-auto flex justify-between items-center h-20 md:mt-4   md:px-0 px-[4%]">
-        <div>
+      <nav className="max-w-[1350px] mx-auto flex justify-between items-center h-20 md:mt-4   px-[2.5%]">
+        <Link href="/">
           <Image src="/icons/real-estate.svg" alt="logo" width={128} height={128} />
-        </div>
+        </Link>
         <div className="flex xl:gap-14 lg:gap-10 gap-8 md:flex hidden">
           {navLinks.map((link) => (
             <Link href={link.href} className="text-white hover:text-[var(--background-primary)] duration-400 transition-colors font-light text-lg tracking-tight" key={link.href}>{link.label}</Link>
@@ -46,7 +46,9 @@ const Navbar = () => {
         }`}
       >
         <div className="flex justify-between items-center h-20 px-[2.5%] border-b border-gray-100">
-          <Image src="/icons/real-estate-dark.svg" alt="logo" width={128} height={128} />
+          <Link href="/">
+            <Image src="/icons/real-estate-dark.svg" alt="logo" width={128} height={128} />
+          </Link>
           
         </div>
         <div className="flex flex-col gap-6 px-[2.5%] pt-8">

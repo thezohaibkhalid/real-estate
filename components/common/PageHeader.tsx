@@ -65,7 +65,7 @@ const PageHeader = ({ title, image, breadcrumb }: { title: string, image: string
       {/* <div className='absolute inset-0 bg-black/20' /> */}
 
       <motion.div
-        className='absolute inset-0 flex flex-col max-w-[1350px] mx-auto justify-center px-[4%] md:px-0'
+        className='absolute inset-0 flex flex-col max-w-[1350px] mx-auto justify-center px-[2.5%]'
         variants={textContainer}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}

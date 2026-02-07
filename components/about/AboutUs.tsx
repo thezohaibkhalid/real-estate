@@ -86,19 +86,19 @@ export default function AboutUs() {
   };
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#0d0d0d]  ">
+    <section className="relative w-full overflow-hidden bg-[#0d0d0d] ">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           background:
-            "radial-gradient(900px 450px at 20% 10%, rgba(255,255,255,0.08), transparent 60%), radial-gradient(700px 380px at 85% 35%, rgba(255,255,255,0.06), transparent 60%)",
+            "radial-gradient(900px 450px at 20% 10%, rgba(255,255,255,0.08), transparent 60%), radial-gradient(700px 380px at 85% 35%, rgba(255,255,255,0.06), transparent 60%) ",
         }}
       />
 
       <motion.div
         ref={ref}
-        className="relative mx-auto w-full max-w-[1350px] px-[4%] py-16 sm:px-6 sm:py-20 md:py-24 lg:py-28 md:px-0"
+        className="relative w-full py-16 sm:py-20 md:py-24 lg:py-28  max-w-[1350px] mx-auto px-[2.5%]"
         variants={container}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}

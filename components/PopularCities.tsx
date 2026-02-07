@@ -164,7 +164,7 @@ export default function PopularCities({
 
   return (
     <section ref={sectionRef} className="w-full bg-[#0b0c10] overflow-hidden">
-      <div className="mx-auto w-full max-w-[1350px] px-[4%] py-20 md:px-0">
+      <div className="mx-auto w-full max-w-[1350px] px-[2.5%] py-20 ">
         <div className="flex items-center justify-between gap-6 overflow-hidden">
           <h2 className="text-[40px] font-light tracking-tight text-white sm:text-[54px] md:text-[62px]">
             {title}

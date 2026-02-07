@@ -11,6 +11,7 @@ import {
   SlidersHorizontal,
 } from "lucide-react";
 import { Urbanist } from "next/font/google";
+import Image from "next/image";
 type Listing = {
   id: string;
   title: string;
@@ -212,10 +213,10 @@ export default function Listings({showNewListings = false}: {showNewListings?: b
   }, [query, location, type]);
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white max-w-[1350px] mx-auto px-[2.5%] ">
       <div className="relative">
         <div className="pointer-events-none absolute left-0 right-0 md:top-[-12px] top-[-200px] z-20">
-          <div className="mx-auto w-full max-w-[1350px] px-[4%] sm:px-6 -translate-y-12 sm:-translate-y-14 md:-translate-y-16 md:px-0">
+          <div className="mx-auto w-full -translate-y-12 sm:-translate-y-14 md:-translate-y-16 ">
             <div className="pointer-events-auto rounded-2xl border border-neutral-200 bg-white p-4 shadow-xl sm:p-5 py-10">
                
                
@@ -270,7 +271,7 @@ export default function Listings({showNewListings = false}: {showNewListings?: b
           </div>
         </div>
 
-        <div className="mx-auto w-full max-w-[1350px] px-[4%] pb-10 pt-80 sm:px-6 sm:pt-60 md:pb-14 lg:pt-40 md:pt-58 md:px-0">
+        <div className="w-full  pb-10 pt-80 sm:pt-60 md:pb-14 lg:pt-40 md:pt-58 ">
           {showNewListings && (
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
             <div className="col-span-1">
@@ -294,14 +295,15 @@ export default function Listings({showNewListings = false}: {showNewListings?: b
             </div>
           </div>
             )}
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 ">
             {filtered.map((item) => (
               <article key={item.id} className="group">
-                <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-100 aspect-[16/10] sm:aspect-[16/9]">
-                  <img
+                <div className="relative w-full overflow-hidden rounded-2xl bg-neutral-100 md:aspect-[16/14] aspect-[14/9]">
+                  <Image
                     src={item.imageUrl}
                     alt={item.title}
-                    className="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
+                    fill
+                    className="object-cover transition duration-300 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
                 </div>

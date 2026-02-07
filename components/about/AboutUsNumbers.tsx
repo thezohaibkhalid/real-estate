@@ -115,7 +115,7 @@ export default function AboutUsNumbers({
 
   return (
     <section ref={sectionRef} className="w-full">
-      <div className="mx-auto w-full max-w-[1300px] px-[4%] py-20 sm:px-6 md:py-28 lg:py-32">
+      <div className="mx-auto w-full max-w-[1300px] px-[2.5%] py-20 sm:py-28 lg:py-32">
         <motion.div
           className="mx-auto max-w-[1100px] text-center"
           initial="hidden"

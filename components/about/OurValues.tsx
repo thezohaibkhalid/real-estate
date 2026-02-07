@@ -97,7 +97,7 @@ export default function OurValues() {
     <section className="relative w-full overflow-hidden bg-white">
       <motion.div
         ref={ref}
-        className="relative mx-auto w-full max-w-[1300px] px-[4%] py-16 sm:px-6 sm:py-20 md:py-24 lg:py-28 md:px-0"
+        className="relative mx-auto w-full max-w-[1300px] px-[2.5%] py-16 sm:py-20 md:py-24 lg:py-28"
         variants={container}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
